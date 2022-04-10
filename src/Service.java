@@ -7,6 +7,5 @@ public class Service extends Processor{
       System.out.println("Service :" + invoice.getTotalAmount());
     }
     return nextProcessor.applyNextProcessor(invoice);
-
   }
 }

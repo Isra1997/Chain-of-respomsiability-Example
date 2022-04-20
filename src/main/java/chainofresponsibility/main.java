@@ -1,18 +1,19 @@
+package chainofresponsibility;
+
+import chainofresponsibility.Invoice;
 import java.util.UUID;
 
 public class main {
   public static void main(String[] args) {
     //create a request
-    Invoice invoice = new Invoice(100,UUID.randomUUID(),true);
+    Invoice invoice = new Invoice(300,UUID.randomUUID(),true);
 
     calculateTotalAmountWithChainOfResponsibility(invoice);
-    calculateTotalAmountWithOutChainOfResponsibility(invoice);
+//    calculateTotalAmountWithOutChainOfResponsibility(invoice);
 
   }
 
   public static void calculateTotalAmountWithChainOfResponsibility(Invoice invoice){
-
-
     //initializing  processors
     VAT vat = new VAT();
     Service service = new Service();
@@ -23,7 +24,7 @@ public class main {
     service.setNextProcessor(tips);
 
     //starting the chain and send a request
-    vat.applyNextProcessor(invoice);
+    vat.applyProcessor(invoice);
   }
 
 
@@ -38,7 +39,6 @@ public class main {
       invoice.setTotalAmount(invoice.getTotalAmount()+ invoice.getAmount()*0.20);
       System.out.println("Tips:" + invoice.getTotalAmount());
     }
-
   }
 
 

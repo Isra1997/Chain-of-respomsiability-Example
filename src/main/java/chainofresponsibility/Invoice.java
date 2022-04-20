@@ -1,3 +1,5 @@
+package chainofresponsibility;
+
 import java.util.UUID;
 
 public class Invoice {
